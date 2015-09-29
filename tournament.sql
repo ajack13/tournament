@@ -26,5 +26,3 @@ CREATE VIEW matches_played AS select players.id,players.name,COALESCE(count(play
 							group by players.id order by w_t desc;
 
 
---SELECT player_standings.id,player_standings.name,player_standings.win,COALESCE(matches_played.w_t,0)as matcheP from players_standings LEFT JOIN matches_played ON player_standings.id =	matches_played.id; 
---tournament=> select players.name,players.id,COALESCE(dummy.win,0)as w,COALESCE(dummy.lose,0) from players left join dummy ON players.id = dummy.id;

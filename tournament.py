@@ -118,15 +118,17 @@ def swissPairings():
     pls = playerStandings()  #player standings
     returnArr = []
     for i,v in enumerate(pls):
-        try:
-            print 'STD  : ',pls[i],' STD2 : ',pls[i+1]
+        if(i == 0):
+            id1,name1,win1,matches1 = pls[i]
+            id2,name2,win2,matches2 = pls[i+1]
+            returnArr.append((id1,name1,id2,name2))       
+        elif(i%2 !=0):
+            continue
+        else:
             id1,name1,win1,matches1 = pls[i]
             id2,name2,win2,matches2 = pls[i+1]
             returnArr.append((id1,name1,id2,name2));
-            if(i < plc):
-                i = i + 2
-        except:
-            return returnArr
+    return returnArr
 
 
 
