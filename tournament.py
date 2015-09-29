@@ -67,21 +67,17 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
-    # query =""" SELECT players.id,players.name,count(players.name) as w_t FROM players,matches
-    #              WHERE players.id = matches.winner group by players.id order by w_t desc"""
-    query = """ 
-    SELECT matches_won.id,matches_won.name,matches_won.w_t,matches_played.w_t FROM matches_won LEFT JOIN matches_played 
-    ON matches_won.id = matches_played.id
-    """
 
-    query2 ="""
-    SELECT player_standings.id,player_standings.name,player_standings.wins as wins,COALESCE(matches_played.w_t,0)as matches from player_standings 
-    LEFT JOIN matches_played ON player_standings.id = matches_played.id order by wins DESC; 
+    query ="""
+    SELECT player_standings.id,player_standings.name,player_standings.wins as wins,COALESCE(matches_played.w_t,0)as matches 
+        from player_standings LEFT JOIN matches_played 
+            ON player_standings.id = matches_played.id 
+            order by wins DESC; 
     """
 
     conn = connect()
     c = conn.cursor()
-    c.execute(query2)
+    c.execute(query)
     ret = c.fetchall()
     conn.close()
     return ret
