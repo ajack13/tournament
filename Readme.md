@@ -45,6 +45,7 @@ Contains python defenitions for the following db operations
 * Swiss style parings
 * Player Standings (Points table)
 * other utilities
+
 ### tournmarnt_test.py
 Test cases for the queries
 # Run Test cases
