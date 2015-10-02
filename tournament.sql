@@ -6,13 +6,22 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
-CREATE TABLE players(id SERIAL primary key,name TEXT);
 
+--Tables
+
+--Create players table 
+--	id = Primary key
+-- 	name = name of the player 
+CREATE TABLE players(id SERIAL primary key,name TEXT); 
+
+--Create matches table
+--	id = primary key
+--	winner = primary key of the winning player 
 CREATE TABLE matches(id SERIAL primary key ,
 				winner INTEGER REFERENCES players(id),
 				loser INTEGER REFERENCES players(id));
 
--- views
+-- Views
 
 CREATE VIEW player_standings AS select players.id,players.name,COALESCE(matches_won.w_t,0) as wins from players left join matches_won ON players.id = matches_won.id; 
 
