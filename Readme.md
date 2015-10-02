@@ -44,7 +44,7 @@ Contains python defenitions for the following db operations
 * Delete Players
 * Swiss style parings
 * Player Standings (Points table)
-###### ...etc
+* other utilities
 ### tournmarnt_test.py
 Test cases for the queries
 # Run Test cases
