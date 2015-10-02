@@ -39,11 +39,11 @@ this should clone the repository to the folder
 Contains the queries for creating tables and views for PostgreSQL
 ### tournament.py
 Contains python defenitions for the following db operations
-1) DB connection
-2) Register Players
-3) Delete Players
-4) Swiss style parings
-5) Player Standings (Points table)
+* DB connection
+* Register Players
+* Delete Players
+* Swiss style parings
+* Player Standings (Points table)
 ###### ...etc
 ### tournmarnt_test.py
 Test cases for the queries
