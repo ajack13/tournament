@@ -69,7 +69,7 @@ def playerStandings():
     """
 
     query ="""
-    SELECT player_standings.id,player_standings.name,player_standings.wins as wins,COALESCE(matches_played.w_t,0)as matches 
+    SELECT player_standings.id,player_standings.name,player_standings.wins as wins,COALESCE(matches_played.played,0)as matches 
         from player_standings LEFT JOIN matches_played 
             ON player_standings.id = matches_played.id 
             order by wins DESC; 

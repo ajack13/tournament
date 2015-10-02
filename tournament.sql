@@ -2,9 +2,18 @@
 --
 -- Put your SQL 'create table' statements in this file; also 'create view'
 -- statements if you choose to use it.
---
--- You can write comments in this file by starting them with two dashes, like
--- these lines here.
+
+-- =========================================================================== 
+-- Auther 		: Ajay
+-- Created date : 15th sept
+-- ===========================================================================
+--   author      date      		description
+-- ----------   ----------     -----------------------------------------------
+-- Ajay         15th sept		created players,matches table
+-- Ajay			21st sept		created views for matches_won,matches_played
+-- Ajay         28th sept		created view for player_standings
+-- Ajay			1st	 oct		passed all test cases
+-- ===========================================================================
 
 
 --Tables
@@ -23,15 +32,25 @@ CREATE TABLE matches(id SERIAL primary key ,
 
 -- Views
 
-CREATE VIEW player_standings AS select players.id,players.name,COALESCE(matches_won.w_t,0) as wins from players left join matches_won ON players.id = matches_won.id; 
+
+--View for number of matches won by each player and sorts the wins in descending
+
+CREATE VIEW matches_won AS select players.id,COALESCE(count(players.id),0)as won from players,matches 
+						where players.id = matches.winner 
+						group by players.id order by won desc;
 
 
-CREATE VIEW matches_won AS select players.id,players.name,COALESCE(count(players.id),0)as w_t from players left join matches 
-						ON players.id = matches.winner group by players.id order by w_t desc;
-
-
-CREATE VIEW matches_played AS select players.id,players.name,COALESCE(count(players.name),0)as w_t from players,matches 
+--View for number of matches played by each player and sorts by matches played in descending
+CREATE VIEW matches_played AS select players.id,COALESCE(count(players.name),0)as played from players,matches 
 							WHERE players.id = matches.winner OR players.id = matches.loser 
-							group by players.id order by w_t desc;
+							group by players.id order by played desc;
+
+
+--View for payer standings sorted by highest number of wins 
+CREATE VIEW player_standings AS select players.id,players.name,COALESCE(matches_won.won,0) as wins from players left join matches_won 
+			ON players.id = matches_won.id; 
+
+
+
 
 
