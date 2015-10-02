@@ -36,8 +36,8 @@ CREATE TABLE matches(id SERIAL primary key ,
 --View for number of matches won by each player and sorts the wins in descending
 
 CREATE VIEW matches_won AS select players.id,COALESCE(count(players.id),0)as won from players,matches 
-						where players.id = matches.winner 
-						group by players.id order by won desc;
+							where players.id = matches.winner 
+							group by players.id order by won desc;
 
 
 --View for number of matches played by each player and sorts by matches played in descending
@@ -47,8 +47,9 @@ CREATE VIEW matches_played AS select players.id,COALESCE(count(players.name),0)a
 
 
 --View for payer standings sorted by highest number of wins 
-CREATE VIEW player_standings AS select players.id,players.name,COALESCE(matches_won.won,0) as wins from players left join matches_won 
-			ON players.id = matches_won.id; 
+CREATE VIEW player_standings AS select players.id,players.name,COALESCE(matches_won.won,0) as wins 
+							from players left join matches_won 
+							ON players.id = matches_won.id; 
 
 
 
