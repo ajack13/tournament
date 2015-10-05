@@ -34,7 +34,7 @@ Make sure you have installed git
 this should clone the repository to the folder
 
 # Files
----------------------------------------------------
+-------------------------------------------------------------------------------------------
 ### tournament.sql
 Contains the queries for creating tables and views for PostgreSQL
 ### tournament.py
@@ -48,8 +48,21 @@ Contains python defenitions for the following db operations
 
 ### tournmarnt_test.py
 Test cases for the queries
+
+# Import and create database
+--------------------------------------------------------------------------------------------
+1) Open the terminal (command prompt or git bash in windows) and enter the psql console
+```sh
+    $ psql
+```
+2) To import the sql schema ,create database and connect to it enter this in your terminal
+```sh
+    $ i\ yourFileDirectories/tournament.sql 
+```
+
+
 # Run Test cases
----------------------------------------------------
+---------------------------------------------------------------------------------------------
 1)	Navigate to the folder using command promt if you are in windows or the shell if you are using a mac or linux
 2)	Run the file tournament_test.py using python by typing the following command to run through the test cases 
 
@@ -59,7 +72,7 @@ Test cases for the queries
 ```
 
 ### Version
-1.0
+1.1
 
 ### Tech
 * Sublime text - Text editor 
