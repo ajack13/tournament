@@ -13,9 +13,13 @@
 -- Ajay			21st sept		created views for matches_won,matches_played
 -- Ajay         28th sept		created view for player_standings
 -- Ajay			1st	 oct		passed all test cases
+-- Ajay 		5th  oct 		Added DROP and CREATE database on import
 -- ===========================================================================
 
-
+--on import of sql file create new database and connect to it
+DROP DATABASE IF EXISTS tournament;
+CREATE DATABASE tournament;
+\c tournament
 --Tables
 
 --Create players table 
